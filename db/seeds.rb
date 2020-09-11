@@ -21,4 +21,8 @@ end
 drinks_url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a'
 drinks_json = JSON.parse(open(drinks_url).read)
 
+drinks_json['drinks'].each do |drink|
+  Cocktail.create!(name: drink["strDrink"], image_url: drink["strDrinkThumb"])
+end
+
 pp drinks_json
