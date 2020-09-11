@@ -17,3 +17,8 @@ json['drinks'].each do |element|
   Ingredient.create!(name: element["strIngredient1"])
 end
 
+
+drinks_url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a'
+drinks_json = JSON.parse(open(drinks_url).read)
+
+pp drinks_json

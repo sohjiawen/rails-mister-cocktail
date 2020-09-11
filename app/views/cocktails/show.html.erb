@@ -1,14 +1,20 @@
-<h1><%= @cocktail.name.capitalize %></h1>
+<div class="container text-left info">
+  <h1><%= @cocktail.name.capitalize %></h1>
+  <img src="https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="cocktail dog" class="beer-dog">
 
-<h3>Recipe</h3>
+  <h3>Recipe</h3>
 
   <% @doses.each do |dose| %>
-  <div>
-    <p>Ingredient: <%= dose.ingredient.name %></p>
-    <p>Quantity: <%= dose.description %></p>
-    <%= link_to 'Delete', dose_path(dose), method: :delete, data: { confirm: "Are you sure?" }  %>
-  <% end %>
+  <div class="card-product mb-3">
+    <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="img-ingredients" />
+    <div class="card-product-infos">
+      <h2>Ingredient: <%= dose.ingredient.name %></h2>
+      <p>Quantity: <%= dose.description %></p>
+      <p><%= link_to 'Delete', dose_path(dose), method: :delete, data: { confirm: "Are you sure?" }  %></p>
+    </div>
   </div>
+  <% end %>
 
-<%= link_to 'Add ingredients', new_cocktail_dose_path(@cocktail.id) %>
-<%= link_to 'Back to all Cocktails',cocktails_path %>
+  <div class="btn btn-dark"><%= link_to 'Add ingredients', new_cocktail_dose_path(@cocktail.id) %></div>
+  <div class="btn btn-success"><%= link_to 'Back to all Cocktails',root_path %></div>
+</div>
